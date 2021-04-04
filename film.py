@@ -169,7 +169,9 @@ async def __get_stats(lbxd_id):
     text = ''
     stats_json = await api_call('film/{}/statistics'.format(lbxd_id))
     views = stats_json['counts']['watches']
-    if views > 9999:
+    if views > 999999:
+        views = str(round(views / 1000000, 2)) + 'M'
+    elif views > 9999:
         views = str(round(views / 1000)) + 'k'
     elif views > 999:
         views = str(round(views / 1000, 1)) + 'k'
