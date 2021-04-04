@@ -20,7 +20,6 @@ logging.basicConfig(
 bot = commands.Bot(command_prefix='!', case_insensitive=True)
 bot.remove_command('help')
 
-
 @bot.event
 async def on_ready():
     logging.info(
@@ -79,11 +78,11 @@ async def helplb(ctx):
         name='Letterboxd Bot', icon_url='https://i.imgur.com/5VALKVy.jpg')
     help_embed.set_footer(
         text='Maintained & hosted by Vito#1929. For support, please join https://discord.gg/HunZVZQz9d',
-        icon_url='https://i.imgur.com/li4cLpd.png')
+        icon_url='https://i.imgur.com/h0CaAv4.png')
     for key, value in SETTINGS['help'].items():
         help_embed.add_field(name=key, value=value, inline=False)
     help_embed.description = 'Invite Bot | '\
-        + '[GitHub](https://github.com/Porkepik/Letterboxd-Bot)'
+        + '[GitHub](https://github.com/velzerat/lb-bot)'
     await ctx.send(embed=help_embed)
 
 
@@ -135,6 +134,15 @@ async def check_if_two_args(ctx):
 
 
 @bot.command(name='list')
+@commands.check(check_if_two_args)
+async def list_(ctx, username, *args):
+    try:
+        msg = await list_embed(username, ' '.join(str(i) for i in args))
+    except LetterboxdError as err:
+        msg = err
+    await send_msg(ctx, msg)
+	
+@bot.command(name='l')
 @commands.check(check_if_two_args)
 async def list_(ctx, username, *args):
     try:
