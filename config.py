@@ -23,12 +23,14 @@ SETTINGS["fixed_film_search"] = {
 SETTINGS["fixed_user_search"] = {
     "alexander": "JGrT",
     "chloe_": "nZ4F",
-    "Supe": "bdJr"
+    "Supe": "bdJr",
+	"bump": "fxz5"
+}
 }
 SETTINGS["help"] = {
     "!film/!movie/!f/!kino <film-name> (<year>)":
     "Searches a film on Letterboxd. The year is optional.",
-    "!crew/!director/!actor/!actress!c <name>":
+    "!crew/!director/!actor/!actress/!c <name>":
     "Searches a crew person.",
     "!user/!u <username>":
     "Displays the details of a Letterboxd member.",
@@ -39,9 +41,7 @@ SETTINGS["help"] = {
     "!diary <username>":
     "Displays the recent diary entries from a member.",
     "!del":
-    "Deletes the last message the bot sent in a channel.",
-	"!follow <username>":
-	"Posts diary entries of this user in this channel. Use !unfollow to unfollow and !followlist to see who's being followed."
+    "Deletes the last message the bot sent in a channel."
 }
 SETTINGS["letterboxd"] = {
     "api_base": "",
