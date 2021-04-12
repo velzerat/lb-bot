@@ -26,7 +26,7 @@ SETTINGS["fixed_user_search"] = {
     "Supe": "bdJr",
 	"bump": "fxz5"
 }
-}
+
 SETTINGS["help"] = {
     "!film/!movie/!f/!kino <film-name> (<year>)":
     "Searches a film on Letterboxd. The year is optional.",
