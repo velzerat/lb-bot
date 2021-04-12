@@ -15,6 +15,3 @@ def random_line(afile, default=None):
         if randrange(i) == 0:  # random int [0..i)
             line = aline
     return line
-
-
-print(line)
