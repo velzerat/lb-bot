@@ -71,12 +71,10 @@ async def __get_infos(member_json, lbxd_id, with_stats=True):
     description = '**'
     if with_stats:
         if member_json.get('location'):
-            description += member_json['location'] + '** -- **'
+            description += member_json['location']'
         stats_json = await api_call('member/{}/statistics'.format(lbxd_id))
-        description += str(stats_json['counts']['followers']) + ' followers**, **'
-        description += str(stats_json['counts']['following']) + 'following**\n'
         description += str(stats_json['counts']['watches']) + ' films watched ('
-        description += str(stats_json['counts']['filmsInDiaryThisYear'])+'this year)**\n'
+        description += str(stats_json['counts']['filmsInDiaryThisYear'])+' this year)**\n'
     return display_name, avatar_url, description
 
 
