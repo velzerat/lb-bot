@@ -11,6 +11,7 @@ from helpers import LetterboxdError
 from list_ import list_embed
 from review import review_embed
 from user import user_embed
+from roulette import random_embed
 
 logging.basicConfig(
     level=logging.INFO,
@@ -132,8 +133,7 @@ async def check_if_two_args(ctx):
         await ctx.send('This command requires 2 parameters.')
     return len(msg) > 2
 
-
-@bot.command(name='list')
+@bot.command(aliases=['list', 'l'])
 @commands.check(check_if_two_args)
 async def list_(ctx, username, *args):
     try:
@@ -141,12 +141,13 @@ async def list_(ctx, username, *args):
     except LetterboxdError as err:
         msg = err
     await send_msg(ctx, msg)
-	
-@bot.command(name='l')
+
+
+@bot.command(name='roulette')
 @commands.check(check_if_two_args)
-async def list_(ctx, username, *args):
+async def list_(ctx):
     try:
-        msg = await list_embed(username, ' '.join(str(i) for i in args))
+        msg = await random_embed(args)
     except LetterboxdError as err:
         msg = err
     await send_msg(ctx, msg)
