@@ -66,15 +66,15 @@ async def __get_userjson(lbxd_id):
 
 
 async def __get_infos(member_json, lbxd_id, with_stats=True):
-    print(member_json['id'])
     display_name = member_json['displayName']
     avatar_url = member_json['avatar']['sizes'][-1]['url']
     description = '**'
-    if member_json.get('location'):
-        description += member_json['location'] + '** -- **'
     if with_stats:
+        if member_json.get('location'):
+            description += member_json['location'] + '\n'
         stats_json = await api_call('member/{}/statistics'.format(lbxd_id))
-        description += str(stats_json['counts']['watches']) + ' films**\n'
+        description += str(stats_json['counts']['watches']) + ' films ('
+        description += str(stats_json['counts']['filmsInDiaryThisYear'])+' this year)**\n'
     return display_name, avatar_url, description
 
 
