@@ -2,6 +2,7 @@ import logging
 from asyncio import sleep
 
 import discord
+import json
 from discord.ext import commands
 from config import SETTINGS
 from crew import crew_embed
@@ -11,6 +12,10 @@ from helpers import LetterboxdError
 from list_ import list_embed
 from review import review_embed
 from user import user_embed
+from roulette import random_embed
+from datetime import datetime
+from facts import fact_list
+from roulette import random_embed
 
 logging.basicConfig(
     level=logging.INFO,
@@ -152,6 +157,15 @@ async def list_(ctx, username, *args):
     await send_msg(ctx, msg)
 
 
+@bot.command(name='roulette')
+async def roulette(ctx):
+    try:
+        msg = await random_embed()
+    except LetterboxdError as err:
+        msg = err
+    await send_msg(ctx, msg)
+
+
 @bot.command(aliases=['entry', 'r'])
 @commands.check(check_if_two_args)
 async def review(ctx, username, *args):
@@ -195,5 +209,11 @@ async def delete(ctx):
         await cmd_message.delete()
         await bot_message.delete()
 
+@bot.command()
+async def lbfact(ctx):
+    "Recite a cinematic fact"
+    index = int(datetime.now().microsecond)%len(fact_list)
+    prefix = 'Did you know: '
+    await ctx.send(prefix+fact_list[index])
 
 bot.run(SETTINGS['discord'])
