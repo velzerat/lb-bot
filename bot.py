@@ -146,7 +146,7 @@ async def list_(ctx, username, *args):
 @bot.command(name='roulette')
 async def roulette(ctx):
     try:
-        msg = await random_embed(args)
+        msg = await random_embed()
     except LetterboxdError as err:
         msg = err
     await send_msg(ctx, msg)
