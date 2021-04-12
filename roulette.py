@@ -4,6 +4,6 @@ from api import api_call
 
 async def random_embed():
     film_list = await api_call('list/Lb60/entries')
-    film = film_list['items'][randrange(len(film_list))]
+    film = film_list['items'][randrange(len(film_list)['items'])]
 
     return await film_embed(film['film']['name'])
