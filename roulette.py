@@ -8,7 +8,6 @@ async def random_embed():
     f = open(os.path.join(__location__, "films.txt"), "r", encoding="utf8", errors="ignore")
 
     film = random_line(f)
-    print(film)
     f.close()
     return await film_embed(film)
 
