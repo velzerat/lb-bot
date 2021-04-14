@@ -15,7 +15,7 @@ async def random(username):
 
     else: #pick from user watchlist
         __, __, user_lbxd_id, __ = await user_details(username)
-        film = __get_watchlist(user_lbxd_id)
+        film = await __get_watchlist(user_lbxd_id)
         return await film_embed(film)
 
 async def __get_watchlist(user_lbxd_id):

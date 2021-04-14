@@ -11,7 +11,7 @@ from helpers import LetterboxdError
 from list_ import list_embed
 from review import review_embed
 from user import user_embed
-from roulette import random_embed
+from roulette import random
 
 logging.basicConfig(
     level=logging.INFO,
