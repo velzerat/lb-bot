@@ -4,7 +4,7 @@ from api import api_call
 import os
 from user import user_details
 
-async def random_embed(username):
+async def random(username):
 
     if not username: #get movie from file, when no username is given
         __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
